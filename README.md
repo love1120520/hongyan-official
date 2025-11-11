@@ -1,5 +1,7 @@
 # 📌 ✦鴻宴國際新金專業貸款服務
 
+[![E2E test](https://github.com/love1120520/hongyan-official/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/love1120520/hongyan-official/actions/workflows/e2e-test.yml)
+
 鴻宴國際新金專業服務
 中小企業與個人資金調度｜票貼融資｜信用整合
 📞 官方 LINE：[@love08571120](https://lin.ee/xUAqPIa)
