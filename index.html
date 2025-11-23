@@ -46,16 +46,72 @@
 <body>
 <div class="hero">
   <div class="overlay"></div>
-  <h1>NaNa 髮藝</h1>
-  <p>男士漸層剪 × 油頭造型 × 染燙護理</p>
-  <p>地址：台北市中山區南京東路一段100號5樓</p>
+  <h1 id="shop-name">NaNa 髮藝</h1>
+  <p id="services">男士漸層剪 × 油頭造型 × 染燙護理</p>
+  <p id="address">地址：台北市中山區南京東路一段100號5樓</p>
   <div class="contacts">
-    <p>預約 LINE ID：aa0905036378</p>
-    <p>預約信箱：sharon05051991@gmail.com</p>
-    <p>Instagram：<a href="https://www.instagram.com/barber_nana.0729" style="color:#fff;">@barber_nana.0729</a></p>
-    <p>TikTok：@sharonlin729、@777zaleq</p>
+    <p id="line-id">預約 LINE ID：aa0905036378</p>
+    <p id="email">預約信箱：sharon05051991@gmail.com</p>
+    <p id="instagram">Instagram：<a href="https://www.instagram.com/barber_nana.0729" style="color:#fff;">@barber_nana.0729</a></p>
+    <p id="tiktok">TikTok：@sharonlin729、@777zaleq</p>
   </div>
-  <p style="margin-top:1em;">由凱鈞推廣，實際服務由專業設計師團隊執行</p>
+  <p id="note" style="margin-top:1em;">由凱鈞推廣，實際服務由專業設計師團隊執行</p>
 </div>
+<script>
+  // Load contact data from JSON file
+  fetch('data/contacts.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('HTTP error ' + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Validate data structure and required fields
+      if (!data || !data.nana || !data.nana.name || !data.nana.services || 
+          !data.nana.address || !data.nana.lineId || !data.nana.email ||
+          !data.nana.instagram || !data.nana.instagram.url || !data.nana.instagram.handle ||
+          !data.nana.tiktok || !data.nana.note) {
+        throw new Error('Invalid or incomplete data structure');
+      }
+      
+      const nana = data.nana;
+      document.getElementById('shop-name').textContent = nana.name;
+      document.getElementById('services').textContent = nana.services;
+      document.getElementById('address').textContent = '地址：' + nana.address;
+      document.getElementById('line-id').textContent = '預約 LINE ID：' + nana.lineId;
+      document.getElementById('email').textContent = '預約信箱：' + nana.email;
+      
+      // Safely create Instagram link with comprehensive URL validation
+      const instagramP = document.getElementById('instagram');
+      instagramP.textContent = 'Instagram：';
+      
+      try {
+        // Use URL constructor to validate URL is well-formed
+        const instagramUrlObj = new URL(nana.instagram.url);
+        // Only allow https:// and http:// protocols
+        if (instagramUrlObj.protocol === 'https:' || instagramUrlObj.protocol === 'http:') {
+          const instagramLink = document.createElement('a');
+          instagramLink.href = instagramUrlObj.href;
+          instagramLink.style.color = '#fff';
+          instagramLink.textContent = nana.instagram.handle;
+          instagramP.appendChild(instagramLink);
+        } else {
+          // URL is not http/https, just show text
+          instagramP.textContent = 'Instagram：' + nana.instagram.handle;
+        }
+      } catch (e) {
+        // URL parsing failed, just show text without link
+        instagramP.textContent = 'Instagram：' + nana.instagram.handle;
+      }
+      
+      document.getElementById('tiktok').textContent = 'TikTok：' + nana.tiktok;
+      document.getElementById('note').textContent = nana.note;
+    })
+    .catch(error => {
+      console.error('Error loading contact data:', error);
+      // Fallback content in HTML will be displayed if fetch fails
+    });
+</script>
 </body>
 </html>
