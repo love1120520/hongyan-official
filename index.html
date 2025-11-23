@@ -46,16 +46,35 @@
 <body>
 <div class="hero">
   <div class="overlay"></div>
-  <h1>NaNa 髮藝</h1>
-  <p>男士漸層剪 × 油頭造型 × 染燙護理</p>
-  <p>地址：台北市中山區南京東路一段100號5樓</p>
+  <h1 id="shop-name">NaNa 髮藝</h1>
+  <p id="services">男士漸層剪 × 油頭造型 × 染燙護理</p>
+  <p id="address">地址：台北市中山區南京東路一段100號5樓</p>
   <div class="contacts">
-    <p>預約 LINE ID：aa0905036378</p>
-    <p>預約信箱：sharon05051991@gmail.com</p>
-    <p>Instagram：<a href="https://www.instagram.com/barber_nana.0729" style="color:#fff;">@barber_nana.0729</a></p>
-    <p>TikTok：@sharonlin729、@777zaleq</p>
+    <p id="line-id">預約 LINE ID：aa0905036378</p>
+    <p id="email">預約信箱：sharon05051991@gmail.com</p>
+    <p id="instagram">Instagram：<a href="https://www.instagram.com/barber_nana.0729" style="color:#fff;">@barber_nana.0729</a></p>
+    <p id="tiktok">TikTok：@sharonlin729、@777zaleq</p>
   </div>
-  <p style="margin-top:1em;">由凱鈞推廣，實際服務由專業設計師團隊執行</p>
+  <p id="note" style="margin-top:1em;">由凱鈞推廣，實際服務由專業設計師團隊執行</p>
 </div>
+<script>
+  // Load contact data from JSON file
+  fetch('data/contacts.json')
+    .then(response => response.json())
+    .then(data => {
+      const nana = data.nana;
+      document.getElementById('shop-name').textContent = nana.name;
+      document.getElementById('services').textContent = nana.services;
+      document.getElementById('address').textContent = '地址：' + nana.address;
+      document.getElementById('line-id').textContent = '預約 LINE ID：' + nana.lineId;
+      document.getElementById('email').textContent = '預約信箱：' + nana.email;
+      document.getElementById('instagram').innerHTML = 'Instagram：<a href="' + nana.instagram.url + '" style="color:#fff;">' + nana.instagram.handle + '</a>';
+      document.getElementById('tiktok').textContent = 'TikTok：' + nana.tiktok;
+      document.getElementById('note').textContent = nana.note;
+    })
+    .catch(error => {
+      console.error('Error loading contact data:', error);
+    });
+</script>
 </body>
 </html>
