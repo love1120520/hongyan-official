@@ -67,6 +67,11 @@
       return response.json();
     })
     .then(data => {
+      // Validate data structure
+      if (!data || !data.nana) {
+        throw new Error('Invalid data structure');
+      }
+      
       const nana = data.nana;
       document.getElementById('shop-name').textContent = nana.name;
       document.getElementById('services').textContent = nana.services;
@@ -74,14 +79,20 @@
       document.getElementById('line-id').textContent = '預約 LINE ID：' + nana.lineId;
       document.getElementById('email').textContent = '預約信箱：' + nana.email;
       
-      // Safely create Instagram link
+      // Safely create Instagram link with URL validation
       const instagramP = document.getElementById('instagram');
       instagramP.textContent = 'Instagram：';
       const instagramLink = document.createElement('a');
-      instagramLink.href = nana.instagram.url;
-      instagramLink.style.color = '#fff';
-      instagramLink.textContent = nana.instagram.handle;
-      instagramP.appendChild(instagramLink);
+      const instagramUrl = nana.instagram.url;
+      // Validate URL starts with http:// or https:// to prevent javascript: URLs
+      if (instagramUrl && (instagramUrl.startsWith('https://') || instagramUrl.startsWith('http://'))) {
+        instagramLink.href = instagramUrl;
+        instagramLink.style.color = '#fff';
+        instagramLink.textContent = nana.instagram.handle;
+        instagramP.appendChild(instagramLink);
+      } else {
+        instagramP.textContent = 'Instagram：' + nana.instagram.handle;
+      }
       
       document.getElementById('tiktok').textContent = 'TikTok：' + nana.tiktok;
       document.getElementById('note').textContent = nana.note;
