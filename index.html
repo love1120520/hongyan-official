@@ -67,9 +67,12 @@
       return response.json();
     })
     .then(data => {
-      // Validate data structure
-      if (!data || !data.nana) {
-        throw new Error('Invalid data structure');
+      // Validate data structure and required fields
+      if (!data || !data.nana || !data.nana.name || !data.nana.services || 
+          !data.nana.address || !data.nana.lineId || !data.nana.email ||
+          !data.nana.instagram || !data.nana.instagram.url || !data.nana.instagram.handle ||
+          !data.nana.tiktok || !data.nana.note) {
+        throw new Error('Invalid or incomplete data structure');
       }
       
       const nana = data.nana;
@@ -79,18 +82,26 @@
       document.getElementById('line-id').textContent = '預約 LINE ID：' + nana.lineId;
       document.getElementById('email').textContent = '預約信箱：' + nana.email;
       
-      // Safely create Instagram link with URL validation
+      // Safely create Instagram link with comprehensive URL validation
       const instagramP = document.getElementById('instagram');
       instagramP.textContent = 'Instagram：';
-      const instagramLink = document.createElement('a');
-      const instagramUrl = nana.instagram.url;
-      // Validate URL starts with http:// or https:// to prevent javascript: URLs
-      if (instagramUrl && (instagramUrl.startsWith('https://') || instagramUrl.startsWith('http://'))) {
-        instagramLink.href = instagramUrl;
-        instagramLink.style.color = '#fff';
-        instagramLink.textContent = nana.instagram.handle;
-        instagramP.appendChild(instagramLink);
-      } else {
+      
+      try {
+        // Use URL constructor to validate URL is well-formed
+        const instagramUrlObj = new URL(nana.instagram.url);
+        // Only allow https:// and http:// protocols
+        if (instagramUrlObj.protocol === 'https:' || instagramUrlObj.protocol === 'http:') {
+          const instagramLink = document.createElement('a');
+          instagramLink.href = instagramUrlObj.href;
+          instagramLink.style.color = '#fff';
+          instagramLink.textContent = nana.instagram.handle;
+          instagramP.appendChild(instagramLink);
+        } else {
+          // URL is not http/https, just show text
+          instagramP.textContent = 'Instagram：' + nana.instagram.handle;
+        }
+      } catch (e) {
+        // URL parsing failed, just show text without link
         instagramP.textContent = 'Instagram：' + nana.instagram.handle;
       }
       
