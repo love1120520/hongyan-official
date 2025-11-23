@@ -60,7 +60,12 @@
 <script>
   // Load contact data from JSON file
   fetch('data/contacts.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('HTTP error ' + response.status);
+      }
+      return response.json();
+    })
     .then(data => {
       const nana = data.nana;
       document.getElementById('shop-name').textContent = nana.name;
@@ -68,12 +73,22 @@
       document.getElementById('address').textContent = '地址：' + nana.address;
       document.getElementById('line-id').textContent = '預約 LINE ID：' + nana.lineId;
       document.getElementById('email').textContent = '預約信箱：' + nana.email;
-      document.getElementById('instagram').innerHTML = 'Instagram：<a href="' + nana.instagram.url + '" style="color:#fff;">' + nana.instagram.handle + '</a>';
+      
+      // Safely create Instagram link
+      const instagramP = document.getElementById('instagram');
+      instagramP.textContent = 'Instagram：';
+      const instagramLink = document.createElement('a');
+      instagramLink.href = nana.instagram.url;
+      instagramLink.style.color = '#fff';
+      instagramLink.textContent = nana.instagram.handle;
+      instagramP.appendChild(instagramLink);
+      
       document.getElementById('tiktok').textContent = 'TikTok：' + nana.tiktok;
       document.getElementById('note').textContent = nana.note;
     })
     .catch(error => {
       console.error('Error loading contact data:', error);
+      // Fallback content in HTML will be displayed if fetch fails
     });
 </script>
 </body>
