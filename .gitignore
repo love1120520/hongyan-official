@@ -1,0 +1,25 @@
+# Downloaded files
+*.下載
+
+# Build artifacts
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules (if added later)
+node_modules/
+
+# Log files
+*.log
