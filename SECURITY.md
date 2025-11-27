@@ -15,7 +15,8 @@ We actively maintain and provide security updates for the following services:
 If you discover a security vulnerability in our services or website, please report it responsibly:
 
 ### Contact Information
-- **LINE**: [@love08571120](https://lin.ee/xUAqPIa)
+- **LINE**: [@love08571120](https://lin.ee/xUAqPIa)  
+  _(This link will open the official LINE account for @love08571120. Please verify that the handle shown in LINE matches "@love08571120" before submitting any security report.)_
 - **Email**: Contact through official website at [www.love08571120.com](https://www.love08571120.com)
 
 ### What to Include
