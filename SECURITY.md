@@ -16,7 +16,7 @@ If you discover a security vulnerability in our services or website, please repo
 
 ### Contact Information
 - **LINE**: [@love08571120](https://lin.ee/xUAqPIa)  
-  _(This link will open the official LINE account for @love08571120. Please verify that the handle shown in LINE matches "@love08571120" before submitting any security report.)_
+  _(Please verify the handle shown in LINE matches before submitting any security report.)_
 - **Email**: Contact through official website at [www.love08571120.com](https://www.love08571120.com)
 
 ### What to Include
