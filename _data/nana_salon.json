@@ -9,7 +9,10 @@
       "handle": "@barber_nana.0729",
       "url": "https://www.instagram.com/barber_nana.0729"
     },
-    "tiktok": ["@sharonlin729", "@777zaleq"]
+    "tiktok": [
+      {"handle": "@sharonlin729"},
+      {"handle": "@777zaleq"}
+    ]
   },
   "promoter": "凱鈞"
 }
