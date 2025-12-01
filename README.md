@@ -27,8 +27,5 @@
 
 [NaNa 髮藝首頁](./index.html) 提供男士漸層剪、油頭造型以及染燙護理等預約制服務，由專業設計師團隊執行，凱鈞負責經營推廣。
 
-- 地址：台北市中山區南京東路一段100號5樓
-- 預約 LINE：aa0905036378
-- 預約信箱：sharon05051991@gmail.com
-- Instagram：[@barber_nana.0729](https://www.instagram.com/barber_nana.0729)
+👉 完整聯絡資訊與預約方式請參閱 [NaNa 髮藝首頁](./index.html)
 
