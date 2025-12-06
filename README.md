@@ -1,3 +1,5 @@
+[![build](https://github.com/love1120520/hongyan-official/actions/workflows/jekyll-docker.yml/badge.svg?branch=main)](https://github.com/love1120520/hongyan-official/actions/workflows/jekyll-docker.yml)
+
 # 📌 ✦鴻宴國際新金專業貸款服務
 
 鴻宴國際新金專業服務
