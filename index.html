@@ -2,6 +2,8 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NaNa 髮藝 - 專業男士理髮服務，提供漸層剪、油頭造型、染燙護理">
 <title>NaNa 髮藝</title>
 <style>
   body, html {
@@ -41,21 +43,49 @@
   .contacts {
     margin-top: 1em;
   }
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 </style>
 </head>
 <body>
-<div class="hero">
-  <div class="overlay"></div>
+<a href="#main-content" class="skip-link">跳至主要內容</a>
+<main id="main-content" role="main">
+<div class="hero" role="banner">
+  <div class="overlay" aria-hidden="true"></div>
   <h1>NaNa 髮藝</h1>
   <p>男士漸層剪 × 油頭造型 × 染燙護理</p>
   <p>地址：台北市中山區南京東路一段100號5樓</p>
-  <div class="contacts">
+  <section class="contacts" aria-label="聯絡資訊">
+    <h2 class="sr-only">聯絡方式</h2>
     <p>預約 LINE ID：aa0905036378</p>
-    <p>預約信箱：sharon05051991@gmail.com</p>
-    <p>Instagram：<a href="https://www.instagram.com/barber_nana.0729" style="color:#fff;">@barber_nana.0729</a></p>
+    <p>預約信箱：<a href="mailto:sharon05051991@gmail.com" aria-label="寄送郵件至 sharon05051991@gmail.com">sharon05051991@gmail.com</a></p>
+    <p>Instagram：<a href="https://www.instagram.com/barber_nana.0729" style="color:#fff;" aria-label="在 Instagram 上關注我們">@barber_nana.0729</a></p>
     <p>TikTok：@sharonlin729、@777zaleq</p>
-  </div>
-  <p style="margin-top:1em;">由凱鈞推廣，實際服務由專業設計師團隊執行</p>
+  </section>
+  <p style="margin-top:1em;" role="contentinfo">由凱鈞推廣，實際服務由專業設計師團隊執行</p>
 </div>
+</main>
 </body>
 </html>
